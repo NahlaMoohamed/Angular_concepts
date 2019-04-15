@@ -1,0 +1,25 @@
+<div class="container">
+  <div style="text-align:center;">
+    <h1 class="header">To-Do list</h1>
+  </div>
+  <div class="row">
+    <form [formGroup]="myForm" (submit) = "appendToList()">
+        <input class="form-control" id ="toDoListInput" placeholder="What needs to be done?" formControlName="toDoListInput" type="text">
+    </form>
+    <ul>
+      <li class="well todo-li" *ngFor="let item of toDoList">
+            <div *ngIf="item.isDone === true">          
+              <i (click)="listItemDone(item.todo)" style="margin-left:1%;color:black;cursor: pointer;text-decoration: none;" class="fa fa-check-circle"></i>{{ item.todo }} 
+              <div style="float:right;"><i (click)="deleteItem(item.todo)" style="margin-left:1%;color:red;cursor: pointer;text-decoration: none;" class="fa fa-times-circle"></i></div>
+            </div>
+            <div *ngIf="item.isDone === false" style="text-decoration:line-through">
+              <i style="margin-left:1%;color:green;text-decoration: none;" class="fa fa-check-circle"></i>{{ item.todo }}
+              <div style="float:right;"><i (click)="deleteItem(item.todo)" style="margin-left:1%;color:red;cursor: pointer;text-decoration: none;" class="fa fa-times-circle"></i></div>
+            </div>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="toDoList.length > 0" class="remaining">
+    {{ getActiveElements() }} To-Do items in the list.
+  </div>
+</div>

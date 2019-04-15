@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <h1 class="header">User</h1>
+  <div class="row">
+    <h1>Name: {{name}}</h1>
+    <h3>Age: {{age}}</h3>
+  </div>
+  <!--
+  <div class="row">
+    <h3>Hobbies:</h3>
+    <div class="col-md-3">
+        <ul>
+          <li *ngFor="let hobby of hobbies; let i =index">
+            {{ i+1 }}: {{ hobby }}<i (click)="deleteHobby(hobby)" style="margin-left:1%;color:black;cursor: pointer;" class="fa fa-times"></i></li>
+        </ul>
+        <form (submit)="addHobby(hobby.value)">
+            <div class="form-group">
+              <label for="hobby">Hobby: </label>
+              <input class="form-control" type="text" #hobby>
+            </div>
+        </form>
+      </div>
+  </div>
+  -->
+</div>
+
+  
+<button (click)="toggleEdit()">Edit User</button>
+<div *ngIf=isEdit>
+  <h1>Edit User</h1>
+  <form>
+    <div>
+      <label for="name">Name: </label>
+      <input type="text" [(ngModel)]="name" name="name">
+    </div>
+    <div>
+        <label for="age">Age: </label>
+        <input type="number" [(ngModel)]="age" name="age">
+      </div>
+  </form>
+</div>

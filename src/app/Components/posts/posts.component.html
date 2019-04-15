@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <h1 class="header">{{totalNumOfPosts}} Posts</h1>
+  <div class="row">
+    <div class="col-md-3">
+        <div class="well">
+            <h3>Adding new Post</h3>
+            <form [formGroup] = "postFormGroup">
+                <div class="form-group">
+                    <label for="title">Title: </label>
+                    <input class="form-control" type="text" formControlName = "ipTitle">
+                  </div>
+                <div class="form-group">
+                  <label for="body">Body: </label>
+                  <input class="form-control" type="text" formControlName = "ipBody">
+                </div>
+                <div class="form-group">
+                    <label for="userId">User ID: </label>
+                    <input class="form-control" type="number" formControlName ="ipUserId">
+                </div>
+                <button (click) = "createNewPost()" class="btn btn-default">Add post</button>
+              </form>
+        </div>
+        <div class="well" style="margin-top:1%;">
+              <h3>Getting post by user ID</h3>
+              <form [formGroup] = "editUserForm">
+                <div class="form-group">
+                  <label for="userId">User Id: </label>
+                  <input class="form-control" type="number" formControlName = "userId">
+                </div>
+                <button (click) = "updatePostsByUserId()" class="btn btn-default">Get Posts</button>
+              </form>
+            </div>
+    </div>
+    <div class="col-md-9">
+      <div *ngFor="let post of posts">
+          <div class="well well-sm" style="margin: 5px;">
+            <h4>{{ post.title }}</h4>
+            <p>{{ post.body }}</p>
+        </div>
+        </div>
+    </div>
+  </div>  
